@@ -53,6 +53,7 @@
     },
     "battery": {
         "interval":1,
+        "tooltip": false,
         "bat":"BAT0",
         "states": {
             "good": 95,
@@ -70,6 +71,7 @@
     },
 
     "pulseaudio": {
+        "tooltip": false,
         "format": "{icon} {volume}%",
         "format-muted": "  {volume}%",
         "format-icons": {
@@ -85,6 +87,7 @@
     }
 ,
     "custom/uptime": {
+        "tooltip": false,
         "format": "󰁟  {text}",
         "interval": 60,
         "exec": "uptime -p | cut -d \" \" -f 2,3,4,5" 
