@@ -95,6 +95,7 @@
     },
 
     "custom/date": {
+        "tooltip": false,
         "format": " {text}",
         "interval": 60,
         "exec": "date +\"%a-%d-%m-%Y\""
