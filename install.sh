@@ -13,7 +13,7 @@ doas pacman -Syu zathura zathura-pdf-mupdf nano neovim --needed --noconfirm
 
 # Install Terminal Tools
 doas pacman -Syu fzf bat lsd zoxide fd duf ripgrep tldr ffmpeg wget curl fastfetch htop starship git yazi man-db jq base-devel stow ntfs-3g
-kitty openssh kitty nwg-look firefox zram-generator nm-connection-editor pavucontrol bind trash-cli --noconfirm --needed
+kitty openssh kitty nwg-look firefox zram-generator nm-connection-editor pavucontrol bind trash-cli poppler imagemagick --noconfirm --needed
 
 # Install Compressing and Archiving Tools
 doas pacman -Syu 7zip unzip zip gzip unrar tar --needed --noconfirm
@@ -56,6 +56,7 @@ doas chmod +x /usr/local/bin/*
 cd $HOME/Downloads
 wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf -P ./MesloLGS-NF
 doas mv MesloLGS-NF /usr/share/fonts
+
 # Install Drivers
 doas pacman -Syu nvidia-settings nvidia-utils nvidia linux-firmware-nvidia --noconfirm --needed
 
@@ -111,6 +112,14 @@ echo -e "[Theme]\nCurrent=Sugar-Candy"| doas tee /etc/sddm.conf
 pip install bs4 requests --break-system-changes
 paru -S python-pytubefix --noconfirm
 
+# Install Plymouth
+paru -S plymouth --noconfirm
+# Add plymouth to HOOKS=() after udev in /etc/mkinitcpio.conf 
+# Then run doas mkinitcpio -p linux
+# Add splash to the end of this line GRUB_CMDLINE_LINUX_DEFAULT="" /etc/default/grub
+# Then run doas grub-mkconfig -o /boot/grub/grub.cfg
+# Set Them For Plymouth
+# doas plymouth-set-default-theme -R spinfinity
 
 # Install Andromeda theme, Tela Theme, Nordic cursors
 # Tela Icon Theme  https://www.gnome-look.org/p/1279924/ ==> /usr/share/icons  ==> Icon Theme.
