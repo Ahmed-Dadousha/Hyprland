@@ -1,0 +1,43 @@
+[manager]
+linemode = "size"
+show_symlink = true
+ratio = [2,4,3]
+
+[preview]
+max_width  = 600
+max_height = 900
+
+[opener]
+play = [
+	{run = 'vlc "$@" &> /dev/null', block = true, for = "linux"},
+]
+edit = [
+	{run = 'nvim "$@"', block = true, for = "linux"},
+]
+preview = [
+        {run = 'zathura "$@"', block = true, for = "linux"},
+]
+view = [
+        {run = 'sxiv "$@"', block = true, for = "linux"},
+]
+unzip = [
+        {run = 'unzip $@', block = false, for = "linux"}
+]
+extract = [
+        {run = 'tar -xvf $@', block = false, for = "linux"}
+]
+decompress = [
+        {run = 'gunzip -k $@', block = false, for = "linux"}
+]
+
+[open]
+rules = [
+	{mime = "video/*", use = "play"},
+	{mime = "image/*", use = "view"},
+	{mime = "audio/*", use = "play"},
+        {name = "*.pdf",   use = "preview"},
+	{mime = "text/*",  use = "edit"},
+	{name = "*.zip",   use = "unzip"},
+	{name = "*.tar",   use = "extract"},
+	{name = "*.gz",    use = "decompress"},
+]

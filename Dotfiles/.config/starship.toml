@@ -1,0 +1,57 @@
+format = """
+$username\
+[ 󰣇 ](fg:#ff7f50)\
+$hostname\
+[ in ](fg:#ff7f50)\
+$directory\
+$git_branch\
+$git_metrics\
+$git_status\
+$fill\
+$cmd_duration\
+$time
+$line_break\
+$character\
+"""
+
+[character]
+vimcmd_symbol = '[❮](bold yellow)'
+
+[git_branch]
+format = '[ at ](fg:#ff7f50)[$branch]($style) '
+
+[git_metrics]
+disabled = false
+
+[hostname]
+ssh_only = false
+disabled = false
+format = '[$hostname]($style)'
+
+[username]
+disabled = false
+show_always = true
+format = '[$user]($style)'
+
+[directory]
+format = "[$path]($style)"
+truncation_length = 7
+truncation_symbol = "…/"
+truncate_to_repo = false
+
+[directory.substitutions]
+"Documents" = "󰈙"
+"Downloads" = ""
+"Music" = ""
+"Pictures" = ""
+
+[fill]
+symbol = " "
+
+[cmd_duration]
+min_time = 0
+
+[time]
+disabled = false
+time_format = "%r" # Hour:Minute Format
+format = '[ 󰞌 $time](fg:#07b0b0)'

@@ -1,0 +1,100 @@
+// __        __          _                 
+// \ \      / /_ _ _   _| |__   __ _ _ __  
+//  \ \ /\ / / _` | | | | '_ \ / _` | '__| 
+//   \ V  V / (_| | |_| | |_) | (_| | |    
+//    \_/\_/ \__,_|\__, |_.__/ \__,_|_|    
+//                 |___/                   
+//  
+// by Stephan Raabe (2023) 
+// ----------------------------------------------------- 
+//
+{
+    // General Settings
+    "layer": "top",
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,    
+    "spacing": 4,
+
+    // Load Modules
+    "include": [
+        "~/.config/waybar/modules.json"
+    ],
+
+    // Modules Left
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+
+    // Modules Right    
+    "modules-right": [
+        "custom/uptime",
+        "pulseaudio",
+        "battery", 
+        "hyprland/language",
+        "custom/date",
+        "clock",
+        "tray"
+    ],
+
+    "hyprland/language":{
+        "format":"  {long} {variant}"
+    },
+
+    "tray": {
+         "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "timezone": "Africa/Cairo",
+        "interval": 1,
+        "format": " {:%r}"
+    },
+    "battery": {
+        "interval":1,
+        "bat":"BAT0",
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-full": " {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": "  {capacity}%",
+        //"format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["󰂎", "󰁻","󰁼","󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "  {volume}%",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [" 󰝞 ", "  ", " 󰕾 "]
+        },
+        "on-click": "pavucontrol"
+    }
+,
+    "custom/uptime": {
+        "format": "󰁟  {text}",
+        "interval": 60,
+        "exec": "uptime -p | cut -d \" \" -f 2,3,4,5" 
+
+    },
+
+    "custom/date": {
+        "format": " {text}",
+        "interval": 60,
+        "exec": "date +\"%a-%d-%m-%Y\""
+
+    }
+}
