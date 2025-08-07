@@ -13,7 +13,7 @@ doas pacman -Syu zathura zathura-pdf-mupdf nano neovim --needed --noconfirm
 
 # Install Terminal Tools
 doas pacman -Syu fzf bat lsd zoxide fd duf ripgrep tldr ffmpeg wget curl fastfetch htop starship git yazi man-db jq base-devel stow ntfs-3g
-kitty openssh kitty nwg-look firefox zram-generator nm-connection-editor pavucontrol bind --noconfirm --needed
+kitty openssh kitty nwg-look firefox zram-generator nm-connection-editor pavucontrol bind trash-cli --noconfirm --needed
 
 # Install Compressing and Archiving Tools
 doas pacman -Syu 7zip unzip zip gzip unrar tar --needed --noconfirm
