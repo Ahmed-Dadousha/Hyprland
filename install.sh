@@ -113,6 +113,6 @@ paru -S python-pytubefix --noconfirm
 
 
 # Install Andromeda theme, Tela Theme, Nordic cursors
-# Tela Icon Theme  https://www.gnome-look.org/p/1279924/ ==> .icons ==> Icon Theme.
+# Tela Icon Theme  https://www.gnome-look.org/p/1279924/ ==> /usr/share/icons  ==> Icon Theme.
+# Cursors Theme https://www.pling.com/p/1662218/         ==> /usr/share/icons  ==> Cursors Theme.
 # Andromeda Theme https://www.gnome-look.org/p/2039961   ==> /usr/share/themes ==> System Theme.
-# Cursors Theme https://www.pling.com/p/1662218/         ==> /usr/share/icons ==> Cursors Theme.
