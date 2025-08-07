@@ -1,0 +1,2 @@
+#!/bin/bash
+java -javaagent:/home/adosha/Source/BurpSuite_Pro/BurpSuiteLoader_v2022.8.jar -noverify -jar /home/adosha/Source/BurpSuite_Pro/burpsuite_pro_v2022.8.jar

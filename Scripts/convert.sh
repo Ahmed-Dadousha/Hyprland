@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+
+# If no input
+if [[ "$#" -eq 0 ]]; then
+    echo "Please enter a file or a directory to convert."
+
+# If multi input
+elif [ "$#" -gt 1 ]; then
+    for input in "$@"; do
+        # Get input filename without extension
+        filename=$(echo "${input%.*}")
+        echo "Converting file \"$input\" to mp3...."
+        [ -f "$input" ] && ffmpeg -n -i "$input" "${filename}.mp3"
+    done
+
+# If input is a file
+elif [[ -f "$1" ]]; then
+    # Get input filename without extension
+    input="$1"
+    filename=$(echo "${input%.*}")
+    echo "Converting file \"$1\" to mp3...."
+    echo "${filename}.mp3"
+    ffmpeg -n -i "$1" "${filename}.mp3"
+#If input is a directory
+elif [[ -d "$1" ]]; then
+    for input in "$1"/*; do
+        # Get input filename without extension
+        filename=$(echo "${input%.*}")
+        echo "Converting file \"$input\" to mp3...."
+        [ -f "$input" ] && ffmpeg -n -i "$input" "${filename}.mp3"
+    done
+
+# If input not exists
+else
+    echo "Please enter a valid file or directory."
+fi

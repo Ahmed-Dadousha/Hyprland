@@ -1,0 +1,6 @@
+#!/bin/bash
+
+[[ "$1" == "exit" ]]      && sleep 1 && hyprctl   dispatch exit
+[[ "$1" == "reboot" ]]    && sleep 1 && systemctl reboot
+[[ "$1" == "shutdown" ]]  && sleep 1 && systemctl poweroff
+[[ "$1" == "suspend" ]]   && sleep 1 && systemctl suspend
