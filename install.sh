@@ -36,7 +36,9 @@ cd Fonts
 doas cp -r Arimo Cousine Tinos Noto_Sans_Arabic /usr/share/fonts/
 
 # Install Dotfiles
-cd ../Dotfiles
+cd ..
+cp -r Dotfiles $HOME/
+cd $HOME/Dotfiles
 stow .
 doas fc-cache -fv
 
@@ -111,3 +113,6 @@ paru -S python-pytubefix --noconfirm
 
 
 # Install Andromeda theme, Tela Theme, Nordic cursors
+# Tela Icon Theme  https://www.gnome-look.org/p/1279924/ ==> .icons ==> Icon Theme.
+# Andromeda Theme https://www.gnome-look.org/p/2039961   ==> /usr/share/themes ==> System Theme.
+# Cursors Theme https://www.pling.com/p/1662218/         ==> /usr/share/icons ==> Cursors Theme.
