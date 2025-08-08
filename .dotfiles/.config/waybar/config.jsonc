@@ -35,7 +35,8 @@
         "hyprland/language",
         "custom/date",
         "clock",
-        "tray"
+        "tray",
+        "custom/power"
     ],
 
     "hyprland/language":{
@@ -97,6 +98,13 @@
         "format": " {text}",
         "interval": 60,
         "exec": "date +\"%a-%d-%m-%Y\""
+
+    },
+
+    "custom/power": {
+        "tooltip": false,
+        "format": "󰐥 ",
+        "on-click": "wlogout -b 4"
 
     }
 }
