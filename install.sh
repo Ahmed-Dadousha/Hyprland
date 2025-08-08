@@ -35,7 +35,7 @@ curl https://raw.githubusercontent.com/Ahmed-Dadousha/Arch/refs/heads/main/Scrip
 cd Fonts
 doas cp -r Arimo Cousine Tinos Noto_Sans_Arabic /usr/share/fonts/
 
-# Photos
+# Photos heroscreen.cc
 cd .. 
 cp -r Photos $HOME/Photos
 
