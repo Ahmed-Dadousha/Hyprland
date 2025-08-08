@@ -9,7 +9,7 @@ mkdir $HOME/Downloads/{video/final,audio} $HOME/Source $HOME/Documents -p
 doas mkdir /mnt/{USB,SSD,HDD,Phone,Batocera}
 
 # Install Text Editors
-doas pacman -Syu zathura zathura-pdf-mupdf nano neovim --needed --noconfirm
+doas pacman -Syu zathura zathura-pdf-mupdf nano neovim obsidian --needed --noconfirm
 
 # Install Browser (Firefox)
 doas pacman -Syu firefox --noconfirm --needed
