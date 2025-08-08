@@ -110,7 +110,7 @@ doas chown adosha:adosha /usr/share/themes/*
 doas pacman -Syu sddm --noconfirm --needed
 doas systemctl enable sddm
 paru -S sddm-theme-sugar-candy
-echo -e "[Theme]\nCurrent=Sugar-Candy"| doas tee /etc/sddm.conf
+echo -e "[Theme]\nCurrent=Sugar-Candy\n\n[General]\nNumlock=on"| doas tee /etc/sddm.conf
 
 # Install Python Libraries
 pip install bs4 requests --break-system-changes
