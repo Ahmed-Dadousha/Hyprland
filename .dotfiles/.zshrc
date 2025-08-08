@@ -28,7 +28,7 @@ alias gc='git commit -m '
 alias gp="git push"
 alias srv="ssh adosha@hs.lan"
 alias timeshift="sudo -E timeshift-gtk"
-#export TERM=xterm-256color
+export TERM=xterm-256color
 export FZF_DEFAULT_COMMAND='find . -type f'
 
 
@@ -50,4 +50,7 @@ export KEYTIMEOUT=1
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-PATH=$PATH:$HOME/go/bin
+# Enviroment Variables
+export EDITOR=nvim
+export WAYLAND_DISPLAY=wayland-1
+export PATH=$PATH:$HOME/go/bin

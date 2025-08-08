@@ -35,19 +35,23 @@ curl https://raw.githubusercontent.com/Ahmed-Dadousha/Arch/refs/heads/main/Scrip
 cd Fonts
 doas cp -r Arimo Cousine Tinos Noto_Sans_Arabic /usr/share/fonts/
 
+# Photos
+cd .. 
+cp -r Photos $HOME/Photos
+
 # Install Dotfiles
-cd ..
 cp -r .dotfiles $HOME/
 cd $HOME/.dotfiles
 stow .
 doas fc-cache -fv
 
 # Burpsuite Pro Launcher
+cd -
 doas cp BurpsuitePro.desktop /usr/share/applications
-doas cp burpsuite.png /usr/share/pixmaps
+doas cp Photos/burpsuite.png /usr/share/pixmaps
 
 # Install Scripts
-cd ../Scripts
+cd Scripts
 doas cp * /usr/local/bin/ -r
 doas chown adosha:adosha /usr/local/bin/*
 doas chmod +x /usr/local/bin/* 
@@ -111,6 +115,10 @@ echo -e "[Theme]\nCurrent=Sugar-Candy"| doas tee /etc/sddm.conf
 # Install Python Libraries
 pip install bs4 requests --break-system-changes
 paru -S python-pytubefix --noconfirm
+
+# Crontab 
+doas systemctl enable cronie.service 
+# Add WAYLAND_DISPLAY=wayland-1 to crontab -e
 
 # Install Plymouth
 paru -S plymouth --noconfirm
