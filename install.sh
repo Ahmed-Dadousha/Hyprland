@@ -11,9 +11,12 @@ doas mkdir /mnt/{USB,SSD,HDD,Phone,Batocera}
 # Install Text Editors
 doas pacman -Syu zathura zathura-pdf-mupdf nano neovim --needed --noconfirm
 
+# Install Browser (Firefox)
+doas pacman -Syu firefox --noconfirm --needed
+
 # Install Terminal Tools
 doas pacman -Syu fzf bat lsd zoxide fd duf ripgrep tldr ffmpeg wget curl fastfetch htop starship git yazi man-db jq base-devel stow ntfs-3g
-kitty openssh kitty nwg-look firefox zram-generator nm-connection-editor pavucontrol bind trash-cli poppler imagemagick --noconfirm --needed
+kitty openssh kitty nwg-look zram-generator nm-connection-editor pavucontrol bind trash-cli poppler imagemagick grim slurp --noconfirm --needed
 
 # Install Compressing and Archiving Tools
 doas pacman -Syu 7zip unzip zip gzip unrar tar --needed --noconfirm
@@ -81,13 +84,15 @@ github.com/projectdiscovery/katana/cmd/katana@latest
 github.com/tomnomnom/waybackurls@latest
 github.com/ffuf/ffuf/v2@latest
 github.com/projectdiscovery/httpx/cmd/httpx@latest
+github.com/lc/gau/v2/cmd/gau@latest
+github.com/tomnomnom/assetfinder
 )
 
 for tool in "${gotools[@]}"; do
     go install -v $tool
 done
 
-paru -S sqlmap --noconfirm --needed
+paru -S sqlmap nmap --noconfirm --needed
 
 # Power Management TLP and Auto-cpufreq
 doas pacman -Syu tlp tlp-rdw --noconfirm --needed
