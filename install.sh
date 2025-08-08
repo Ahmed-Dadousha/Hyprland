@@ -22,7 +22,7 @@ kitty openssh kitty nwg-look zram-generator nm-connection-editor pavucontrol bin
 doas pacman -Syu 7zip unzip zip gzip unrar tar --needed --noconfirm
 
 # Install Programming Languages
-doas pacman -Syu go python python-pip python-pipx gcc make cmake --noconfirm --needed
+doas pacman -Syu go python python-pip python-pipx gcc make cmake npm --noconfirm --needed
 
 # Insatall ZSH and Oh_my_zsh
 doas pacman -Syu zsh zsh-autosuggestions zsh-syntax-highlighting --noconfirm --needed
