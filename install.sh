@@ -120,6 +120,9 @@ paru -S python-pytubefix --noconfirm
 doas systemctl enable cronie.service 
 # Add WAYLAND_DISPLAY=wayland-1 to crontab -e
 
+# Install unimatrix
+paru -S unimatrix --noconfirm
+
 # Install Plymouth
 paru -S plymouth --noconfirm
 # Add plymouth to HOOKS=() after udev in /etc/mkinitcpio.conf 

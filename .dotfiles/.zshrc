@@ -28,7 +28,8 @@ alias gc='git commit -m '
 alias gp="git push"
 alias srv="ssh adosha@hs.lan"
 alias timeshift="sudo -E timeshift-gtk"
-export TERM=xterm-256color
+alias matrix="unimatrix  -l naAS -s 95"
+# export TERM=xterm-256color
 export FZF_DEFAULT_COMMAND='find . -type f'
 
 
