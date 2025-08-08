@@ -121,6 +121,8 @@ paru -S plymouth --noconfirm
 # Set Them For Plymouth
 # doas plymouth-set-default-theme -R spinfinity
 
+# Pacmman Configuration
+# Add ILoveCandy and Remove the # before Color to /etc/pacman.conf
 # Install Andromeda theme, Tela Theme, Nordic cursors
 # Tela Icon Theme  https://www.gnome-look.org/p/1279924/ ==> /usr/share/icons  ==> ~/.icons  ==> Icon Theme.
 # Cursors Theme https://www.pling.com/p/1662218/         ==> /usr/share/icons  ==> ~/.icons  ==> Cursors Theme.
