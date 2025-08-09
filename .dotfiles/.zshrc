@@ -26,10 +26,10 @@ alias ga="git add *"
 alias gs="git status"
 alias gc='git commit -m '
 alias gp="git push"
+alias gr="git rm"
 alias srv="ssh adosha@hs.lan"
 alias timeshift="sudo -E timeshift-gtk"
 alias matrix="unimatrix  -l naAS -s 95"
-# export TERM=xterm-256color
 export FZF_DEFAULT_COMMAND='find . -type f'
 
 
@@ -45,8 +45,8 @@ function y() {
 
 
 # vi mode
-bindkey -v
-export KEYTIMEOUT=1
+# bindkey -v
+# export KEYTIMEOUT=1
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
