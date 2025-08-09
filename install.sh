@@ -38,11 +38,8 @@ curl https://raw.githubusercontent.com/Ahmed-Dadousha/Arch/refs/heads/main/Scrip
 cd Fonts
 doas cp -r Arimo Cousine Tinos Noto_Sans_Arabic /usr/share/fonts/
 
-# Photos heroscreen.cc
-cd .. 
-cp -r Photos $HOME/Photos
-
 # Install Dotfiles
+cd ..
 cp -r .dotfiles $HOME/
 cd $HOME/.dotfiles
 stow .
@@ -51,7 +48,7 @@ doas fc-cache -fv
 # Burpsuite Pro Launcher
 cd -
 doas cp BurpsuitePro.desktop /usr/share/applications
-doas cp Photos/burpsuite.png /usr/share/pixmaps
+doas cp burpsuite.png        /usr/share/pixmaps
 
 # Install Scripts
 cd Scripts
