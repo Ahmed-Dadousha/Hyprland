@@ -32,6 +32,8 @@
         "clock",
         "custom/date",
         "custom/uptime",
+        "tray",
+        "custom/power",
     ],
 
     // Modules Right    
@@ -40,8 +42,6 @@
         "pulseaudio",
         "battery", 
         "hyprland/language",
-        "tray",
-        "custom/power",
         "custom/burp",
     ],
 
@@ -122,6 +122,6 @@
     "memory":{
         "tooltip": false,
         "interval": 1,
-        "format": " {used:0.1f}G/{total:0.1f}G   "
+        "format": " {used:0.1f}G/{total:0.1f}G  "
     }
 }
