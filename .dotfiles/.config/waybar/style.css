@@ -398,7 +398,7 @@ window#waybar.empty #window {
     padding: 1px 10px 0px 10px;
     margin: 3px 0px 3px 0px;
     opacity:0.8;
-    border:3px solid @bordercolor;
+    /* border:3px solid @bordercolor; */
 }
 
 
@@ -410,7 +410,7 @@ window#waybar.empty #window {
     padding: 1px 10px 0px 10px;
     margin: 3px 0px 3px 0px;
     opacity:0.8;
-    border:3px solid @bordercolor;
+    /* border:3px solid @bordercolor; */
 }
 /* -----------------------------------------------------
  * Backlight
@@ -501,7 +501,7 @@ window#waybar.empty #window {
     padding: 2px 15px 0px 10px;
     margin: 5px 15px 5px 0px;
     opacity:0.8;
-    border:3px solid @bordercolor;
+    /* border:3px solid @bordercolor; */
 
 }
 
