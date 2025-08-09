@@ -36,7 +36,8 @@
         "custom/date",
         "clock",
         "tray",
-        "custom/power"
+        "custom/power",
+        "custom/burp"
     ],
 
     "hyprland/language":{
@@ -105,6 +106,12 @@
         "tooltip": false,
         "format": "󰐥 ",
         "on-click": "wlogout -b 4"
+    },
 
+    "custom/burp":{
+        "tooltip": false,
+        "interval": 1,
+        "exec": "/usr/local/bin/FixBurp.sh",
+        "format": ""
     }
 }

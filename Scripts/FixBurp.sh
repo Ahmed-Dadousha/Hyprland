@@ -5,25 +5,32 @@ CONFIG_FILE="$HOME/.config/hypr/hyprland.conf"
 
 # The rule pattern (without comment)
 RULE_LINE='windowrule = tile, class:^(burp-.*)$'
+# Burp process check
+if pgrep -f "java .*burpsuite_pro_v2022.8.jar" > /dev/null; then
+    burp_running=true
+else
+    burp_running=false
+fi
 
 # Escape special characters for grep/sed
 ESCAPED_RULE=$(printf '%s\n' "$RULE_LINE" | sed 's/[]\/$*.^[]/\\&/g')
 
-# Check if the line exists commented
-if grep -q "^#${ESCAPED_RULE}$" "$CONFIG_FILE"; then
-    # Uncomment the line
-    sed -i "s/^#\(${ESCAPED_RULE}\)$/\1/" "$CONFIG_FILE"
-    echo "Uncommented the line."
-# Check if it exists uncommented
-elif grep -q "^${ESCAPED_RULE}$" "$CONFIG_FILE"; then
-    # Comment the line
-    sed -i "s/^${ESCAPED_RULE}$/#\0/" "$CONFIG_FILE"
-    echo "Commented the line."
+if ! $burp_running; then
+    # Check if the line exists commented
+    if grep -q "^#${ESCAPED_RULE}$" "$CONFIG_FILE"; then
+        # Uncomment the line
+        sed -i "s/^#\(${ESCAPED_RULE}\)$/\1/" "$CONFIG_FILE"
+        echo "Uncommented the line."
+    fi
 else
-    echo "Line not found in file."
+    # Check if it exists uncommented
+    if grep -q "^${ESCAPED_RULE}$" "$CONFIG_FILE" && [[ -n "$1" ]]; then
+        # Comment the line
+        sed -i "s/^${ESCAPED_RULE}$/#\0/" "$CONFIG_FILE"
+        echo "Commented the line."
+    else
+        echo "Line not found in file."
+    fi
 fi
 
-#while true; do
-#
-#    sleep 3
-#done
+
