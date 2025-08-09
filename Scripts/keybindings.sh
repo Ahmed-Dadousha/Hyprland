@@ -1,32 +1,29 @@
 data=$(
 	cat <<-EOF
 		Category        Keybinding                                   Difinition
-		# System Keybindings [Super = Enter]
+		# System Keybindings [Super = Windows]
 		System super + w                                    Open Browser.
 		System super + f                                    File Manager.
 		System super + b                                    Open Burpsuite.
-		System super + m                                    Mount a Device.
-		System super + shift + m                            Open Keybindings Manual.
+		System super + m                                    Mount a Drive.
 		System super + shift + b                            Toggle Top bar.
-		System super + p                                    Take a Screenshot With Selection.
+		System super + Shift + Printscreen                  Take a Screenshot.
+		System super + Printscreen                          Take a Screenshot With Selection.
 		System super + equal or minus or backspace          Volume.
-		System super + shift + e                            Exit Machine.
+		System super + shift + e                            Exit Menu.
 		System super + F1 or F2                             Brightness.
+		System super + SHift + W                            Change Wallpaper Randomly.
 
-		# DWM Keybindings [Super = Enter]
-		DWM super + d                                    Run Dmenu.
-		DWM super + j                                    Change Focus.
-		DWM super + k                                    Change Focus.
-		DWM super + Enter                                Open a Terminal.
-		DWM super + tab                                  Switch Workspaces.
-		DWM super + shift + c                            kill a Window.
-		DWM super + shift + b                            Toggle Top Bar.
-		DWM super + shift + q                            Kill DWM.
-		DWM super + shift + j                            Move a Window Down In Stack.
-		DWM super + shift + k                            Move a Window Up In Stack.
-		DWM super + shift + l                            Increase Left Window Size In Stack.
-		DWM super + shift + h                            Increase Right Window Size In Stack.
-		DWM super + shift + Enter                        Move a Terminal To Stack.
+		# Hyprland Keybindings [Super = Windows]
+		Hyprland super + d                                    Rofi Menu.
+		Hyprland super + j                                    Change Focus Down.
+		Hyprland super + k                                    Change Focus Up.
+		Hyprland super + Enter                                Open a Terminal.
+		Hyprland super + shift + c                            kill a Window.
+		Hyprland super + shift + b                            Toggle Top Bar.
+		Hyprland super + shift + j                            Move a Window Down In Stack.
+		Hyprland super + shift + k                            Move a Window Up In Stack.
+		Hyprland super + shift + Enter                        Move a Terminal To Stack.
 
 		# Tmux [Prefix = Ctrl + b]
 		Tmux Prefix + :                                  Enter Command mode.
@@ -66,11 +63,6 @@ data=$(
 
 		# PDF Viewer [Zathura]
 		Zathura Ctrl + r                                  Toggle Theme.
-
-		# Image Viewer [Sxiv]
-		Sxiv n                                            Next Image.  
-		Sxiv p                                            Previous Image.  
-		Sxiv Enter                                        Toggle Mode.
 
 	EOF
 )
