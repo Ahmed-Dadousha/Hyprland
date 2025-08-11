@@ -83,13 +83,19 @@ github.com/ffuf/ffuf/v2@latest
 github.com/projectdiscovery/httpx/cmd/httpx@latest
 github.com/lc/gau/v2/cmd/gau@latest
 github.com/tomnomnom/assetfinder
+github.com/jaeles-project/gospider@latest
+github.com/tomnomnom/gf@latest
 )
 
 for tool in "${gotools[@]}"; do
     go install -v $tool
 done
 
-paru -S sqlmap nmap --noconfirm --needed
+# Install tools from main Repos
+doas pacman -Syu nmap sqlmap whois sublist3r amass --needed --noconfirm
+
+# Install Python tools
+pipx install git+https://github.com/RevoltSecurities/ShodanX
 
 # Power Management TLP and Auto-cpufreq
 doas pacman -Syu tlp tlp-rdw --noconfirm --needed
