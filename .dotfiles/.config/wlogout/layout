@@ -1,27 +1,27 @@
 {
     "label" : "shutdown",
-    "action" : "/usr/local/bin/power.sh shutdown",
+    "action" : "/usr/local/bin/power shutdown",
     "text" : "Power Off",
     "keybind" : "s"
 }
 
 {
     "label" : "reboot",
-    "action" : "/usr/local/bin/power.sh reboot",
+    "action" : "/usr/local/bin/power reboot",
     "text" : "Restart",
     "keybind" : "r"
 }
 
 {
     "label" : "logout",
-    "action" : "/usr/local/bin/power.sh exit",
+    "action" : "/usr/local/bin/power exit",
     "text" : "Log Out",
     "keybind" : "e"
 }
 
 {
     "label" : "suspend",
-    "action" : "/usr/local/bin/power.sh suspend",
+    "action" : "/usr/local/bin/power suspend",
     "text" : "Sleep",
     "keybind" : "u"
 }

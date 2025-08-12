@@ -116,7 +116,7 @@
     "custom/burp":{
         "tooltip": false,
         "interval": 1,
-        "exec": "/usr/local/bin/FixBurp.sh",
+        "exec": "/usr/local/bin/Fixburp",
         "format": ""
     },
     "memory":{
