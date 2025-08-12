@@ -91,8 +91,8 @@ for tool in "${gotools[@]}"; do
     go install -v $tool
 done
 
-# Install tools from main Repos
-doas pacman -Syu nmap sqlmap whois sublist3r amass --needed --noconfirm
+# Install tools from main Repo and Black Arch Repo
+doas pacman -Syu nmap sqlmap whois sublist3r --needed --noconfirm
 
 # Install Python tools
 pipx install git+https://github.com/RevoltSecurities/ShodanX
@@ -129,7 +129,7 @@ doas systemctl enable cronie.service
 # Add WAYLAND_DISPLAY=wayland-1 to crontab -e
 
 # Install unimatrix
-paru -S unimatrix --noconfirm
+paru -S unimatrix simple-mtpfs --noconfirm
 
 # Install Plymouth
 paru -S plymouth --noconfirm
