@@ -13,9 +13,11 @@ data=$(
 		System super + shift + e                            Exit Menu.
 		System super + F1 or F2                             Brightness.
 		System super + SHift + W                            Change Wallpaper Randomly.
+                
 
 		# Hyprland Keybindings [Super = Windows]
 		Hyprland super + d                                    Rofi Menu.
+		Hyprland super + f                                    Yazi File Manager.
 		Hyprland super + j                                    Change Focus Down.
 		Hyprland super + k                                    Change Focus Up.
 		Hyprland super + Enter                                Open a Terminal.
@@ -24,6 +26,7 @@ data=$(
 		Hyprland super + shift + j                            Move a Window Down In Stack.
 		Hyprland super + shift + k                            Move a Window Up In Stack.
 		Hyprland super + shift + Enter                        Move a Terminal To Stack.
+		Hyprland super + shift + f                            Fix Burpsuite Tiling.
 
 		# Tmux [Prefix = Ctrl + b]
 		Tmux Prefix + :                                  Enter Command mode.

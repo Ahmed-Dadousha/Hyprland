@@ -92,7 +92,7 @@ for tool in "${gotools[@]}"; do
 done
 
 # Install tools from main Repo and Black Arch Repo
-doas pacman -Syu nmap sqlmap whois sublist3r --needed --noconfirm
+doas pacman -Syu gnu-netcat nmap sqlmap whois sublist3r --needed --noconfirm
 
 # Install Python tools
 pipx install git+https://github.com/RevoltSecurities/ShodanX
