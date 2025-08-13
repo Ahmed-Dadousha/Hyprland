@@ -1,6 +1,6 @@
 ZSH_THEME="robbyrussell"
 plugins=(git)
-source /home/adosha/.oh-my-zsh/oh-my-zsh.sh
+#source /home/adosha/.oh-my-zsh/oh-my-zsh.sh
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
@@ -11,7 +11,8 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#808080'
 unalias -a
 alias ls="lsd -F"
-alias ll="lsd -lahFA"
+alias ll="lsd -lhFA"
+alias ..="cd .."
 alias cls=clear
 alias i="doas pacman -S --noconfirm --needed" 
 alias r="doas pacman -Rsc --noconfirm"

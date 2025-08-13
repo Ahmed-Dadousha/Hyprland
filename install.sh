@@ -26,7 +26,7 @@ doas pacman -Syu go python python-pip python-pipx gcc make cmake npm --noconfirm
 
 # Insatall ZSH and Oh_my_zsh
 doas pacman -Syu zsh zsh-autosuggestions zsh-syntax-highlighting --noconfirm --needed
-curl https://raw.githubusercontent.com/Ahmed-Dadousha/Arch/refs/heads/main/Scripts/oh_my_zsh.sh | sh
+#curl https://raw.githubusercontent.com/Ahmed-Dadousha/Arch/refs/heads/main/Scripts/oh_my_zsh.sh | sh
 
 # Install Hyprland tools
 doas pacman hyprland waybar waypaper swww wl-clipboard rofi-wayland -Syu --needed --noconfirm
