@@ -24,14 +24,15 @@
 
     // Modules Left
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
     ],
 
     // Modules Left
     "modules-center": [
         "clock",
         "custom/date",
-        "custom/uptime",
+        "custom/praytime",
+        // "custom/uptime",
         "tray",
         "custom/power",
     ],
@@ -96,7 +97,6 @@
         "format": "󰁟 {text}",
         "interval": 60,
         "exec": "uptime -p | cut -d \" \" -f 2,3,4,5" 
-
     },
 
     "custom/date": {
@@ -123,5 +123,12 @@
         "tooltip": false,
         "interval": 1,
         "format": " {used:0.1f}G/{total:0.1f}G  "
-    }
+    },
+    
+    "custom/praytime": {
+        "tooltip": false,
+        "format": "  {text}",
+        "interval": 1,
+        "exec": "/usr/local/bin/prayer.py" 
+    },
 }
