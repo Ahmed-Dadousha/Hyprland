@@ -16,7 +16,7 @@ doas pacman -Syu firefox --noconfirm --needed
 
 # Install Terminal Tools
 doas pacman -Syu fzf bat lsd zoxide fd duf ripgrep tldr ffmpeg wget curl fastfetch htop starship git yazi man-db jq base-devel stow ntfs-3g
-kitty openssh kitty nwg-look zram-generator nm-connection-editor pavucontrol bind trash-cli poppler imagemagick grim slurp --noconfirm --needed
+kitty openssh kitty nwg-look zram-generator nm-connection-editor pavucontrol bind trash-cli poppler imagemagick grim slurp dunst --noconfirm --needed
 
 # Install Compressing and Archiving Tools
 doas pacman -Syu 7zip unzip zip gzip unrar tar --needed --noconfirm
