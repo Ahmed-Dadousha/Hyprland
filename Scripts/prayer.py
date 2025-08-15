@@ -74,6 +74,6 @@ text= f"{next_prayer} in {next_hours}h {next_minutes}m"
 
 print(text)
 
-if "5m" in text:
+if "0h 5m" in text:
     os.system(f'notify-send \"{next_prayer}\" \"Time To Pray\" -i ~/Photos/Icons/pray.png -u critical')
     os.system('paplay /usr/share/sounds/freedesktop/stereo/bell.oga')
