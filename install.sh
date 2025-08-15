@@ -24,6 +24,11 @@ doas pacman -Syu 7zip unzip zip gzip unrar tar --needed --noconfirm
 # Install Programming Languages
 doas pacman -Syu go python python-pip python-pipx gcc make cmake npm --noconfirm --needed
 
+# Install Tmux
+
+doas pacman -Syu tmux --noconfirm --needed
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # Insatall ZSH and Oh_my_zsh
 doas pacman -Syu zsh zsh-autosuggestions zsh-syntax-highlighting --noconfirm --needed
 curl https://raw.githubusercontent.com/Ahmed-Dadousha/Arch/refs/heads/main/Scripts/oh_my_zsh.sh | sh
