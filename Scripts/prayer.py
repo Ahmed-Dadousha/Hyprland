@@ -3,6 +3,8 @@ from datetime import datetime, timedelta
 import requests
 import urllib3
 import sys
+import os
+
 
 # Disable SSL warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -68,5 +70,10 @@ next_time = time_diffs[next_prayer]
 next_hours, next_remainder = divmod(next_time.seconds, 3600)
 next_minutes, _ = divmod(next_remainder, 60)
 
-print(f"{next_prayer} in {next_hours}h {next_minutes}m")
+text= f"{next_prayer} in {next_hours}h {next_minutes}m"
 
+print(text)
+
+if "5m" in text:
+    os.system(f'notify-send \"{next_prayer}\" \"Time To Pray\" -i ~/Photos/Icons/pray.png -u critical')
+    os.system('paplay /usr/share/sounds/freedesktop/stereo/bell.oga')
