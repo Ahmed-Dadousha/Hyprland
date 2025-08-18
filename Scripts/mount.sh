@@ -46,7 +46,7 @@ if [ -n "$devices" ]; then
         # Assign a name to selected device if it is empty
         [ -z "$usb_label" ] || [ "$usb_label" == "/mnt/USB/New_Volume" ] && usb_label="New_Volume"
         # Create a directory with selected device label and mount it to the directory
-        [ ! -d "/mnt/USB/$usb_label" ] && mkdir "/mnt/USB/$usb_label" && doas mount "/dev/$usb_name" "/mnt/USB/$usb_label" && exit
+        [ ! -d "/mnt/USB/$usb_label" ] && mkdir "/mnt/USB/$usb_label" && doas mount "/dev/$usb_name" "/mnt/USB/$usb_label" -o umask=000 && exit
         # Unmount the selected device and remove the its directory
         [ -d "/mnt/USB/$usb_label" ] && doas umount "/dev/$usb_name" && doas rm -rf "/mnt/USB/$usb_label"
     fi
