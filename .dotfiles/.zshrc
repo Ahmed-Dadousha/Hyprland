@@ -31,8 +31,10 @@ alias gr="git rm"
 alias srv="ssh adosha@hs.lan"
 alias timeshift="sudo -E timeshift-gtk"
 alias matrix="unimatrix  -l naAS -s 95"
-export FZF_DEFAULT_COMMAND='find . -type f'
 
+export FZF_DEFAULT_COMMAND='fd . --type f --exclude={.git,.cache} --hidden'
+export FZF_CTRL_T_COMMAND=' fd . --type f --exclude={.git,.cache} --hidden'
+export FZF_ALT_C_COMMAND='  fd . --type d --exclude={.git,.cache} --hidden '
 
 # File Manager Function
 function y() {
