@@ -37,19 +37,20 @@ export FZF_CTRL_T_COMMAND=' fd . --type f --exclude={.git,.cache} --hidden'
 export FZF_ALT_C_COMMAND='  fd . --type d --exclude={.git,.cache} --hidden '
 
 # File Manager Function
-function y() {
+function yz() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
          yazi "$@" --cwd-file="$tmp"
 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
+        return "$cwd"
 }
 
 
 # vi mode
-# bindkey -v
-# export KEYTIMEOUT=1
+bindkey -v
+export KEYTIMEOUT=1
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
@@ -58,3 +59,8 @@ source <(fzf --zsh)
 export EDITOR=nvim
 export WAYLAND_DISPLAY=wayland-1
 export PATH=$PATH:$HOME/go/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin
+
+
+# Keybindings
+zle -N yz
+bindkey '^F' yz
