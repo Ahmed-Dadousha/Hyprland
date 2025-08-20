@@ -32,21 +32,30 @@ alias srv="ssh adosha@hs.lan"
 alias timeshift="sudo -E timeshift-gtk"
 alias matrix="unimatrix  -l naAS -s 96"
 
-export FZF_DEFAULT_COMMAND='fd . --type f --exclude={.git,.cache} --hidden'
-export FZF_CTRL_T_COMMAND=' fd . --type f --exclude={.git,.cache} --hidden'
-export FZF_ALT_C_COMMAND='  fd . --type d --exclude={.git,.cache} --hidden '
+export FZF_DEFAULT_COMMAND='fd . -t f --exclude={.git,.cache} --hidden'
+export FZF_CTRL_T_COMMAND=' fd . -t f --exclude={.git,.cache} --hidden'
+export FZF_ALT_C_COMMAND='  fd . -t d --exclude={.git,.cache} --hidden '
 
 # File Manager Function
-function yz() {
+function _yz_helper() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
          yazi "$@" --cwd-file="$tmp"
 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
-        return "$cwd"
 }
 
+# ZLE widget wrapper
+function yz() {
+	zle -I  # clear current input line
+	_yz_helper
+	zle reset-prompt  # refresh prompt after cd
+}
+
+# Keybindings
+zle -N yz
+bindkey '^F' yz
 
 # vi mode
 bindkey -v
@@ -61,6 +70,3 @@ export WAYLAND_DISPLAY=wayland-1
 export PATH=$PATH:$HOME/go/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin
 
 
-# Keybindings
-zle -N yz
-bindkey '^F' yz
