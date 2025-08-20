@@ -30,7 +30,7 @@ alias gp="git push"
 alias gr="git rm"
 alias srv="ssh adosha@hs.lan"
 alias timeshift="sudo -E timeshift-gtk"
-alias matrix="unimatrix  -l naAS -s 95"
+alias matrix="unimatrix  -l naAS -s 96"
 
 export FZF_DEFAULT_COMMAND='fd . --type f --exclude={.git,.cache} --hidden'
 export FZF_CTRL_T_COMMAND=' fd . --type f --exclude={.git,.cache} --hidden'
