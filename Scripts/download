@@ -5,14 +5,15 @@ url="$1"
 [ -z "$url" ] && exit
 
 # Stream type
-type=$(echo -e "video\naudio" | fzf)
 audio_path="$HOME/Downloads/audio"
 video_path="$HOME/Downloads/video"
+type=$(echo -e "video\naudio\nplaylist" | fzf)
+
 download_audio() {
 	# Get Itag number for best rate
 	itag=$(pytubefix "$url" --list | rg "audio" | awk '{print $5, $4, $3}' | sort -t '"' -k2,2nr -k2.3r | head -n 1 | awk -F 'itag="' '{print $2}' | tr -d '"')
 	# Download the audio
-	pytubefix "$url" --target="$audio_path" --itag="$itag" && tomp3 "$audio_path" && find "$audio_path" -type f ! -name "*.mp3" -delete
+	pytubefix "$url" --target="$audio_path" --itag="$itag" && find "$audio_path" -type f ! -name "*.mp3" -print0 |xargs -0 tomp3 && find "$audio_path" -type f ! -name "*.mp3" -delete
 }
 
 # Downoad Best Audio

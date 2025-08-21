@@ -7,6 +7,10 @@ if [[ "$#" -eq 0 ]]; then
 # If multi input
 elif [ "$#" -gt 1 ]; then
     for input in "$@"; do
+        extension=$(echo "$input" | awk -F. '{print $NF}')
+        if [[ "$extension" = "mp3" ]]; then
+            exit
+        fi
         # Get input filename without extension
         filename=$(echo "${input%.*}")
         echo "Converting file \"$input\" to mp3...."
@@ -17,13 +21,23 @@ elif [ "$#" -gt 1 ]; then
 elif [[ -f "$1" ]]; then
     # Get input filename without extension
     input="$1"
+    extension=$(echo "$input" | awk -F. '{print $NF}')
+    if [[ "$extension" = "mp3" ]]; then
+        exit
+    fi
     filename=$(echo "${input%.*}")
     echo "Converting file \"$1\" to mp3...."
     echo "${filename}.mp3"
     ffmpeg -n -i "$1" "${filename}.mp3"
+
 #If input is a directory
 elif [[ -d "$1" ]]; then
+
     for input in "$1"/*; do
+        extension=$(echo "$input" | awk -F. '{print $NF}')
+        if [[ "$extension" = "mp3" ]]; then
+            exit
+        fi
         # Get input filename without extension
         filename=$(echo "${input%.*}")
         echo "Converting file \"$input\" to mp3...."
