@@ -30,11 +30,15 @@ alias gp="git push"
 alias gr="git rm"
 alias srv="ssh adosha@hs.lan"
 alias timeshift="sudo -E timeshift-gtk"
-alias matrix="unimatrix  -l naAS -s 96"
+alias m="unimatrix  -l naAS -s 96"
 
 export FZF_DEFAULT_COMMAND='fd . -t f --exclude={.git,.cache} --hidden'
 export FZF_CTRL_T_COMMAND=' fd . -t f --exclude={.git,.cache} --hidden'
 export FZF_ALT_C_COMMAND='  fd . -t d --exclude={.git,.cache} --hidden '
+
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
 
 # File Manager Function
 function _yz_helper() {
@@ -53,16 +57,15 @@ function yz() {
 	zle reset-prompt  # refresh prompt after cd
 }
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
 # Keybindings
 zle -N yz
 bindkey '^F' yz
-
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
-
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
+bindkey -r '^[c'
+bindkey '^D' fzf-cd-widget
+setopt ignore_eof
 
 # Enviroment Variables
 export EDITOR=nvim

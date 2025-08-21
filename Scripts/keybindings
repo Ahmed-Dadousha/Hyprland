@@ -60,12 +60,14 @@ data=$(
 		Kitty ctrl  + shift + up                          Scroll up.
 		Kitty ctrl  + shift + down                        Scroll down.
 		Kitty ctrl  + l                                   Clear Terminal Screen.
-		Kitty ctrl  + r                                   Fuzzy find through the shell history.
-		Kitty ctrl  + t                                   Fuzzy find all files and subdirectories of the working directory.
-		Kitty alt   + c                                   Fuzzy find all subdirectories of the working directory, and cd to output.
 
 		# PDF Viewer [Zathura]
 		Zathura Ctrl + r                                  Toggle Theme.
+
+                # Fuzzy Finder [FZF]
+		FZF ctrl  + r                                   Fuzzy find through the shell history.
+		FZF ctrl  + t                                   Fuzzy find all files and subdirectories of the working directory.
+		FZF ctrl  + d                                   Fuzzy find all subdirectories of the working directory, and cd to output.
 
 	EOF
 )
