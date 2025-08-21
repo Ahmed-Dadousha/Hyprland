@@ -12,7 +12,7 @@ download_audio() {
 	# Get Itag number for best rate
 	itag=$(pytubefix "$url" --list | rg "audio" | awk '{print $5, $4, $3}' | sort -t '"' -k2,2nr -k2.3r | head -n 1 | awk -F 'itag="' '{print $2}' | tr -d '"')
 	# Download the audio
-	pytubefix "$url" --target="$audio_path" --itag="$itag" && convert.sh "$audio_path" && find "$audio_path" -type f ! -name "*.mp3" -delete
+	pytubefix "$url" --target="$audio_path" --itag="$itag" && tomp3 "$audio_path" && find "$audio_path" -type f ! -name "*.mp3" -delete
 }
 
 # Downoad Best Audio
@@ -36,4 +36,11 @@ elif [[ "$type" = "video" ]]; then
 
 	# Remove original files
 	rm "$audio" "$video"
+
+elif [[ "$type" = "playlist" ]]; then
+    mapfile -t links < <(yt-dlp --flat-playlist --print "%(url)s" "$1")
+    for link in "${links[@]}";do
+        url="$link"
+        download_audio 
+    done
 fi

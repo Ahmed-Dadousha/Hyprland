@@ -127,6 +127,7 @@ echo -e "[Theme]\nCurrent=Sugar-Candy\n\n[General]\nNumlock=on"| doas tee /etc/s
 
 # Install Python Libraries
 pip install bs4 requests --break-system-changes
+doas pacman -Syu yt-dlp --noconfirm --needed
 paru -S python-pytubefix --noconfirm
 
 # Crontab 

@@ -1,4 +1,4 @@
  [mgr]
  prepend_keymap = [
-     {on = ["t", "m"], run = 'shell -- ~/Source/Scripts/convert.sh "$@"', desc = "Convert to mp3"}
+     {on = ["t", "m"], run = 'shell -- /usr/local/bin/tomp3 "$@"', desc = "Convert to mp3"}
  ]
