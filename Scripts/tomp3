@@ -9,7 +9,7 @@ elif [ "$#" -gt 1 ]; then
     for input in "$@"; do
         extension=$(echo "$input" | awk -F. '{print $NF}')
         if [[ "$extension" = "mp3" ]]; then
-            exit
+           continue 
         fi
         # Get input filename without extension
         filename=$(echo "${input%.*}")
@@ -36,7 +36,7 @@ elif [[ -d "$1" ]]; then
     for input in "$1"/*; do
         extension=$(echo "$input" | awk -F. '{print $NF}')
         if [[ "$extension" = "mp3" ]]; then
-            exit
+           continue 
         fi
         # Get input filename without extension
         filename=$(echo "${input%.*}")
