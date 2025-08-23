@@ -2,7 +2,7 @@
     "label" : "shutdown",
     "action" : "/usr/local/bin/power shutdown",
     "text" : "Power Off",
-    "keybind" : "s"
+    "keybind" : "p"
 }
 
 {
@@ -16,14 +16,14 @@
     "label" : "logout",
     "action" : "/usr/local/bin/power exit",
     "text" : "Log Out",
-    "keybind" : "e"
+    "keybind" : "l"
 }
 
 {
     "label" : "suspend",
     "action" : "/usr/local/bin/power suspend",
     "text" : "Sleep",
-    "keybind" : "u"
+    "keybind" : "s"
 }
 
 
