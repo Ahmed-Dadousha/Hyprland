@@ -65,9 +65,16 @@ data=$(
 		Zathura Ctrl + r                                  Toggle Theme.
 
                 # Fuzzy Finder [FZF]
-		FZF ctrl  + r                                   Fuzzy find through the shell history.
-		FZF ctrl  + t                                   Fuzzy find all files and subdirectories of the working directory.
+		FZF ctrl  + h                                   Fuzzy find through the shell history.
+		FZF ctrl  + f                                   Fuzzy find all files and subdirectories of the working directory.
 		FZF ctrl  + d                                   Fuzzy find all subdirectories of the working directory, and cd to output.
+		FZF ctrl  + j                                   Move down in results.
+                FZF ctrl  + k                                   Move up in results.
+                FZF TAB                                         Select multi results.
+
+                # File Manager [Yazi]
+                Yazi ctrl + y                                   Run yazi file manger in the current terminal.
+                Yazi ctrl + q                                   Quit yazi file manger.
 
 	EOF
 )

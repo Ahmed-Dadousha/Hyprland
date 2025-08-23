@@ -62,11 +62,12 @@ source <(fzf --zsh)
 
 # Keybindings
 zle -N yz
-# bindkey '^F' yz
 bindkey -r '^[c'
-bindkey '^T' yz
+bindkey -r '^R'
+bindkey '^Y' yz
 bindkey '^D' fzf-cd-widget
 bindkey '^F' fzf-file-widget
+bindkey '^H' fzf-history-widget
 setopt ignore_eof
 
 # Enviroment Variables
