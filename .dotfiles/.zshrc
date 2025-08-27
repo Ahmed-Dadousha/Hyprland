@@ -64,6 +64,7 @@ source <(fzf --zsh)
 zle -N yz
 bindkey -r '^[c'
 bindkey -r '^R'
+bindkey -r '^T'
 bindkey '^Y' yz
 bindkey '^D' fzf-cd-widget
 bindkey '^F' fzf-file-widget
