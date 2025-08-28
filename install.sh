@@ -90,6 +90,7 @@ github.com/lc/gau/v2/cmd/gau@latest
 github.com/tomnomnom/assetfinder
 github.com/jaeles-project/gospider@latest
 github.com/tomnomnom/gf@latest
+github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 )
 
 for tool in "${gotools[@]}"; do
