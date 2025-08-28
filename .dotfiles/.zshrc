@@ -1,5 +1,4 @@
-ZSH_THEME="robbyrussell"
-plugins=(git)
+ZSH_THEME="robbyrussell" plugins=(git)
 #source /home/adosha/.oh-my-zsh/oh-my-zsh.sh
 
 eval "$(zoxide init zsh)"
@@ -31,7 +30,7 @@ alias gr="git rm"
 alias srv="ssh adosha@hs.lan"
 alias timeshift="sudo -E timeshift-gtk"
 alias m="unimatrix  -l naAS -s 96"
-
+alias bios="doas systemctl reboot --firmware-setup"
 export FZF_DEFAULT_COMMAND='fd . -t f --exclude={.git,.cache} --hidden'
 export FZF_CTRL_T_COMMAND=' fd . -t f --exclude={.git,.cache} --hidden'
 export FZF_ALT_C_COMMAND='  fd . -t d --exclude={.git,.cache} --hidden '
