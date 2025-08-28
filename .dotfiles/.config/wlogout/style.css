@@ -112,3 +112,9 @@ Buttons
 	border-radius: 20px;
 	background-image: image(url("icons/reboot.png"));
 }
+
+#bios {
+	margin: 10px;
+	border-radius: 20px;
+	background-image: image(url("icons/hibernate.png"));
+}

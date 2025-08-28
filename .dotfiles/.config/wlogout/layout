@@ -26,4 +26,11 @@
     "keybind" : "s"
 }
 
+{
+    "label" : "bios",
+    "action" : "/usr/local/bin/power bios",
+    "text" : "BIOS",
+    "keybind" : "b"
+}
+
 

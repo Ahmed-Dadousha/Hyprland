@@ -4,3 +4,4 @@
 [[ "$1" == "reboot" ]]    && sleep 1 && systemctl reboot
 [[ "$1" == "shutdown" ]]  && sleep 1 && systemctl poweroff
 [[ "$1" == "suspend" ]]   && sleep 1 && systemctl suspend
+[[ "$1" == "bios" ]]      && sleep 1 && systemctl reboot --firmware-setup
