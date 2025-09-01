@@ -13,15 +13,15 @@ alias ls="lsd -F"
 alias ll="lsd -lhFA"
 alias ..="cd .."
 alias cls=clear
-alias i="doas pacman -S --noconfirm --needed" 
-alias r="doas pacman -Rsc --noconfirm"
+alias i="sudo pacman -S --noconfirm --needed" 
+alias r="sudo pacman -Rsc --noconfirm"
 alias s="pacman -Ss"
-alias u="doas pacman -Syu --noconfirm"
+alias u="sudo pacman -Syu --noconfirm"
 alias q="pacman -Qs"
 alias cd="z"
 alias cat=bat
 alias vim=nvim
-alias dvim="doas nvim"
+alias dvim="sudo -E nvim"
 alias ga="git add *"
 alias gs="git status"
 alias gc='git commit -m '
@@ -30,7 +30,7 @@ alias gr="git rm"
 alias srv="ssh adosha@hs.lan"
 alias timeshift="sudo -E timeshift-gtk"
 alias m="unimatrix  -l naAS -s 96"
-alias bios="doas systemctl reboot --firmware-setup"
+alias bios="sudo systemctl reboot --firmware-setup"
 export FZF_DEFAULT_COMMAND='fd . -t f --exclude={.git,.cache} --hidden'
 export FZF_CTRL_T_COMMAND=' fd . -t f --exclude={.git,.cache} --hidden'
 export FZF_ALT_C_COMMAND='  fd . -t d --exclude={.git,.cache} --hidden '

@@ -110,7 +110,7 @@
     "custom/power": {
         "tooltip": false,
         "format": "󰐥 ",
-        "on-click": "wlogout -b 4"
+        "on-click": "wlogout -b 5"
     },
 
     "custom/burp":{
