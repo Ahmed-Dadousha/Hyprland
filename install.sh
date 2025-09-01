@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Install sudo
+# usermod -aG wheel adosha 
+
 # Create Directories
 mkdir $HOME/Downloads/{video/final,audio} $HOME/Source $HOME/Documents -p
 sudo mkdir /mnt/{USB,SSD,HDD,Phone,Batocera}
