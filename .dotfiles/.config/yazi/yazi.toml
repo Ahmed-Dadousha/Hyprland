@@ -24,10 +24,10 @@ unzip = [
         {run = 'unzip $@', block = false, for = "linux"}
 ]
 extract = [
-        {run = 'tar -xvf $@', block = false, for = "linux"}
+        {run = 'sudo tar -xvf $@', block = false, for = "linux"}
 ]
 decompress = [
-        {run = 'gunzip -k $@', block = false, for = "linux"}
+        {run = 'sudo gunzip -f -k $@', block = false, for = "linux"}
 ]
 unrar = [
     {run = 'unrar $@', block = false, for = "linux" }
