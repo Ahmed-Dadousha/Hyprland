@@ -129,6 +129,6 @@
         "tooltip": false,
         "format": "  {text}",
         "interval": 1,
-        "exec": "/usr/local/bin/prayer.py && cat /var/log/pray.log | head -n1" 
+        "exec": "/usr/local/bin/prayer.py" 
     },
 }

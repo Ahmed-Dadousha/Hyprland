@@ -24,7 +24,6 @@ sudo pacman -Syu 7zip unzip zip gzip unrar tar --needed --noconfirm
 sudo pacman -Syu go python python-pip python-pipx gcc make cmake npm --noconfirm --needed
 
 # Install Tmux
-
 sudo pacman -Syu tmux --noconfirm --needed
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
@@ -139,6 +138,12 @@ paru -S unimatrix simple-mtpfs --noconfirm
 
 # Install Plymouth
 paru -S plymouth --noconfirm
+
+# EXtra
+sudo touch /var/log/pray.json
+sudo chown adosha:adosha /var/log/pray.json
+sudo chmod a+rwx /var/log/pray.json
+
 # Add plymouth to HOOKS=() after udev in /etc/mkinitcpio.conf 
 # Then run sudo mkinitcpio -p linux
 # Add splash to the end of this line GRUB_CMDLINE_LINUX_DEFAULT="" /etc/default/grub
