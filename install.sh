@@ -15,7 +15,7 @@ sudo pacman -Syu firefox --noconfirm --needed
 
 # Install Terminal Tools
 sudo pacman -Syu fzf bat lsd zoxide fd duf ripgrep tldr ffmpeg wget curl fastfetch htop starship git yazi man-db jq base-devel stow ntfs-3g
-kitty openssh kitty nwg-look zram-generator nm-connection-editor pavucontrol bind trash-cli poppler imagemagick grim slurp dunst libnotify --noconfirm --needed
+kitty openssh kitty nwg-look zram-generator nm-connection-editor pavucontrol bind trash-cli poppler imagemagick grim slurp dunst libnotify -cifs-utils -noconfirm --needed
 
 # Install Compressing and Archiving Tools
 sudo pacman -Syu 7zip unzip zip gzip unrar tar --needed --noconfirm

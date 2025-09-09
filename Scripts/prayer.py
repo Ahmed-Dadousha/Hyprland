@@ -2,41 +2,69 @@
 from datetime import datetime, timedelta
 import requests
 import urllib3
+import json
 import sys
 import os
 
+# === CONFIG ===
+city = "Tanta"
+country = "Egypt"
+log_path = '/var/log/pray.json'  # JSON log file
 
 # Disable SSL warnings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-# Headers only (no proxy)
 headers = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:135.0) Gecko/20100101 Firefox/135.0"
 }
 
-# Get current date
-current_date = datetime.today().strftime('%d-%m-%Y')
+# Get today's date
+today = datetime.today().strftime('%d-%m-%Y')
 
-# API URL
-url = f"https://api.aladhan.com/v1/timingsByCity/{current_date}?city=Tanta&country=Egypt"
+# --- Step 1: Try to load cached prayer times from file ---
+use_cached = False
+timings = {}
 
-try:
-    res = requests.get(url=url, headers=headers, verify=False, timeout=5)
-    res.raise_for_status()
-except requests.exceptions.RequestException as e:
-    print(f"[Error] Failed to fetch prayer times: {e}")
-    sys.exit(1)
+if os.path.exists(log_path):
+    try:
+        with open(log_path, 'r') as file:
+            saved_data = json.load(file)
+            if saved_data.get("date") == today:
+                timings = saved_data.get("timings", {})
+                use_cached = True
+    except Exception as e:
+        print(f"[Warning] Failed to read cache: {e}")
 
-# Parse the response
-data = res.json()
-if data['code'] != 200 or 'data' not in data or 'timings' not in data['data']:
-    print("[Error] Unexpected response format.")
-    sys.exit(1)
+# --- Step 2: Fetch from API if not cached ---
+if not use_cached:
+    url = f"https://api.aladhan.com/v1/timingsByCity/{today}?city={city}&country={country}"
 
-timings = data['data']['timings']
+    try:
+        res = requests.get(url=url, headers=headers, verify=False, timeout=5)
+        res.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"[Error] Failed to fetch prayer times: {e}")
+        sys.exit(1)
+
+    data = res.json()
+    if data['code'] != 200 or 'data' not in data or 'timings' not in data['data']:
+        print("[Error] Unexpected response format.")
+        sys.exit(1)
+
+    timings = data['data']['timings']
+
+    # Save to file
+    try:
+        with open(log_path, 'w') as file:
+            json.dump({
+                "date": today,
+                "timings": timings
+            }, file)
+    except Exception as e:
+        print(f"[Warning] Could not write to log file: {e}")
+
+# --- Step 3: Calculate next prayer time ---
 now = datetime.now()
-
-# List of key prayers
 prayer_names = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']
 time_diffs = {}
 
@@ -45,7 +73,6 @@ for prayer in prayer_names:
     if not prayer_time_str:
         continue
 
-    # Try parsing 24-hour or 12-hour time format
     try:
         try:
             prayer_time = datetime.strptime(f"{now.date()} {prayer_time_str}", "%Y-%m-%d %H:%M")
@@ -60,7 +87,6 @@ for prayer in prayer_names:
 
     time_diffs[prayer] = prayer_time - now
 
-# Find the next prayer
 if not time_diffs:
     print("[Error] Could not determine next prayer.")
     sys.exit(1)
@@ -70,10 +96,11 @@ next_time = time_diffs[next_prayer]
 next_hours, next_remainder = divmod(next_time.seconds, 3600)
 next_minutes, _ = divmod(next_remainder, 60)
 
-text= f"{next_prayer} in {next_hours}h {next_minutes}m"
-
+text = f"{next_prayer} in {next_hours}h {next_minutes}m"
 print(text)
 
+# --- Step 4: Notify if needed ---
 if "0h 5m" in text:
     os.system(f'notify-send \"{next_prayer}\" \"Time To Pray\" -i ~/Photos/Icons/pray.png -u critical')
     os.system('paplay /usr/share/sounds/freedesktop/stereo/bell.oga')
+
