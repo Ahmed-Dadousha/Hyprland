@@ -75,4 +75,4 @@ export EDITOR=nvim
 export WAYLAND_DISPLAY=wayland-1
 export PATH=$PATH:$HOME/go/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin
 
-
+setopt CORRECT
