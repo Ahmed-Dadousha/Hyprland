@@ -144,6 +144,12 @@ sudo touch /var/log/pray.json
 sudo chown adosha:adosha /var/log/pray.json
 sudo chmod a+rwx /var/log/pray.json
 
+# Install samaba For server backup
+# sudo pacman -Syu samba --noconfirm --needed
+# sudo smbpasswd -a $USER
+# sudo nano /etc/samba/smb.conf
+# Install Syncthing
+# sudo pacman -Syu syncthing --noconfirm --needed
 # Add plymouth to HOOKS=() after udev in /etc/mkinitcpio.conf 
 # Then run sudo mkinitcpio -p linux
 # Add splash to the end of this line GRUB_CMDLINE_LINUX_DEFAULT="" /etc/default/grub
