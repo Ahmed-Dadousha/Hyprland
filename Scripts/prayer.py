@@ -21,6 +21,7 @@ headers = {
 # Get today's date
 today = datetime.today().strftime('%d-%m-%Y')
 
+
 # --- Step 1: Try to load cached prayer times from file ---
 use_cached = False
 timings = {}
@@ -42,28 +43,40 @@ if not use_cached:
     try:
         res = requests.get(url=url, headers=headers, verify=False, timeout=5)
         res.raise_for_status()
-    except requests.exceptions.RequestException as e:
-        print(f"[Error] Failed to fetch prayer times: {e}")
-        sys.exit(1)
+        data = res.json()
+        if data['code'] != 200 or 'data' not in data or 'timings' not in data['data']:
+            raise ValueError("Unexpected response format")
+        timings = data['data']['timings']
 
-    data = res.json()
-    if data['code'] != 200 or 'data' not in data or 'timings' not in data['data']:
-        print("[Error] Unexpected response format.")
-        sys.exit(1)
+        # Save to file
+        try:
+            with open(log_path, 'w') as file:
+                json.dump({
+                    "date": today,
+                    "timings": timings
+                }, file)
+        except Exception as e:
+            print(f"[Warning] Could not write to log file: {e}")
 
-    timings = data['data']['timings']
-
-    # Save to file
-    try:
-        with open(log_path, 'w') as file:
-            json.dump({
-                "date": today,
-                "timings": timings
-            }, file)
     except Exception as e:
-        print(f"[Warning] Could not write to log file: {e}")
+        print(f"[Error] Failed to fetch prayer times from API: {e}")
 
-# --- Step 3: Calculate next prayer time ---
+        # --- MODIFIED: Try loading from file again as fallback ---
+        if os.path.exists(log_path):
+            try:
+                with open(log_path, 'r') as file:
+                    saved_data = json.load(file)
+                    print("[Info] Using cached data as fallback.")
+                    timings = saved_data.get("timings", {})
+                    use_cached = True
+            except Exception as e2:
+                print(f"[Error] Could not read fallback cache: {e2}")
+                sys.exit(1)
+        else:
+            print("[Error] No cached file found for fallback.")
+            sys.exit(1)
+
+#--- Step 3: Calculate next prayer time ---
 now = datetime.now()
 prayer_names = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']
 time_diffs = {}
