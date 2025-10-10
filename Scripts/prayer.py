@@ -56,17 +56,19 @@ if not use_cached:
                     "timings": timings
                 }, file)
         except Exception as e:
-            print(f"[Warning] Could not write to log file: {e}")
+            # print(f"[Warning] Could not write to log file: {e}")
+            print("",end="")
 
     except Exception as e:
-        print(f"[Error] Failed to fetch prayer times from API: {e}")
-
+        # print(f"[Error] Failed to fetch prayer times from API: {e}")
+        print("",end="")
+        
         # --- MODIFIED: Try loading from file again as fallback ---
         if os.path.exists(log_path):
             try:
                 with open(log_path, 'r') as file:
                     saved_data = json.load(file)
-                    print("[Info] Using cached data as fallback.")
+                    #print("[Info] Using cached data as fallback.")
                     timings = saved_data.get("timings", {})
                     use_cached = True
             except Exception as e2:
