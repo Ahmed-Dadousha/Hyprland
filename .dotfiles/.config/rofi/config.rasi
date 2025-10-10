@@ -10,7 +10,8 @@
     hl-color: #03a5fc;
     hlt-color: #0000FF;
     alt-color: rgba(0 ,0 ,0, 0);
-    wbg-color: rgba(36 ,40 ,59 ,0.5);
+    //wbg-color: rgba(36 ,40 ,59 ,0.5);
+    wbg-color: rgba(22,33,51,0.9);
     w-border: 2px solid;
     w-border-color: #7dcfff;
     w-padding: 12px;
