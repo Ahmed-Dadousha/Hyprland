@@ -82,8 +82,8 @@
         "format-muted": "  {volume}%",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
@@ -128,7 +128,7 @@
     "custom/praytime": {
         "tooltip": false,
         "format": "  {text}",
-        "interval": 1,
+        "interval": 60,
         "exec": "/usr/local/bin/prayer.py" 
     },
 }

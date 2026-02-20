@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+
+# If no input
+if [[ "$#" -eq 0 ]]; then
+    echo "Please enter a file or a directory to convert."
+
+# If multi input
+elif [ "$#" -gt 1 ]; then
+    for input in "$@"; do
+        extension=$(echo "$input" | awk -F. '{print $NF}')
+        if [[ "$extension" = "mp4" ]]; then
+           continue 
+        fi
+        # Get input filename without extension
+        filename=$(echo "${input%.*}")
+        echo "Converting file \"$input\" to mp4...."
+        [ -f "$input" ] && ffmpeg -n -i "$input" "${filename}.mp4"
+    done
+
+# If input is a file
+elif [[ -f "$1" ]]; then
+    # Get input filename without extension
+    input="$1"
+    extension=$(echo "$input" | awk -F. '{print $NF}')
+    if [[ "$extension" = "mp4" ]]; then
+        exit
+    fi
+    filename=$(echo "${input%.*}")
+    echo "Converting file \"$1\" to mp4...."
+    echo "${filename}.mp4"
+    ffmpeg -n -i "$1" "${filename}.mp4"
+
+# If input not exists
+else
+    echo "Please enter a valid file or directory."
+fi
