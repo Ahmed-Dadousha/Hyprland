@@ -1,17 +1,33 @@
-ZSH_THEME="robbyrussell" plugins=(git)
-#source /home/adosha/.oh-my-zsh/oh-my-zsh.sh
+plugins=(git)
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt appendhistory
+setopt sharehistory
+setopt inc_append_history
 
+#Tab completion
+autoload -Uz compinit
+compinit
+zstyle ':completion:*'  list-colors '=*=90'
+zstyle ':completion:*' menu select 
+
+# Zoxide Init
 eval "$(zoxide init zsh)"
+# Starship Init
 eval "$(starship init zsh)"
 
 # ZSH Plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#808080'
+
+# Aliases
 unalias -a
 alias ls="lsd -F"
 alias ll="lsd -lhFA"
-alias ..="cd .."
 alias cls=clear
 alias i="sudo pacman -S --noconfirm --needed" 
 alias r="sudo pacman -Rsc --noconfirm"
@@ -28,12 +44,16 @@ alias gc='git commit -m '
 alias gp="git push"
 alias gr="git rm"
 alias srv="ssh adosha@hs.lan"
-alias timeshift="sudo -E timeshift-gtk"
+alias timeshift="sudo GTK_THEME=Adwaita:dark ICON_THEME=Adwaita timeshift-gtk"
 alias m="unimatrix  -l naAS -s 96"
 alias bios="sudo systemctl reboot --firmware-setup"
-export FZF_DEFAULT_COMMAND='fd . -t f --exclude={.git,.cache} --hidden'
+export FZF_DEFAULT_COMMAND='fd . -t f -t d --exclude={.git,.cache} --hidden'
 export FZF_CTRL_T_COMMAND=' fd . -t f --exclude={.git,.cache} --hidden'
 export FZF_ALT_C_COMMAND='  fd . -t d --exclude={.git,.cache} --hidden '
+
+# Netwoek
+alias moni="sudo ip link set wlp0s20f0u3 down;sudo iw dev wlp0s20f0u3 set type monitor;sudo ip link set wlp0s20f0u3 up;sudo aireplay-ng -9 wlp0s20f0u3"
+alias mana="sudo ip link set wlp0s20f0u3 down;sudo iw dev wlp0s20f0u3 set type managed;sudo ip link set wlp0s20f0u3 up"
 
 # vi mode
 bindkey -v
@@ -59,20 +79,21 @@ function yz() {
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-# Keybindings
+# FZF Keybindings
+setopt ignoreeof # Disable default behavior that closes shell EOF
 zle -N yz
 bindkey -r '^[c'
 bindkey -r '^R'
 bindkey -r '^T'
-bindkey '^Y' yz
+bindkey '^Y' yz 
 bindkey '^D' fzf-cd-widget
 bindkey '^F' fzf-file-widget
 bindkey '^H' fzf-history-widget
-setopt ignore_eof
+bindkey '^ ' forward-word
 
-# Enviroment Variables
+# Env Variables
 export EDITOR=nvim
 export WAYLAND_DISPLAY=wayland-1
 export PATH=$PATH:$HOME/go/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin
 
-setopt CORRECT
+#setopt CORRECT

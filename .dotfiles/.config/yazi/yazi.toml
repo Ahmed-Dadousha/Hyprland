@@ -30,7 +30,7 @@ decompress = [
         {run = 'sudo gunzip -f -k $@', block = false, for = "linux"}
 ]
 unrar = [
-    {run = 'unrar $@', block = false, for = "linux" }
+    {run = 'sudo unrar e $@', block = false, for = "linux" }
 ]
 
 [open]
