@@ -31,7 +31,7 @@
     "modules-center": [
         "clock",
         "custom/date",
-        "custom/praytime",
+  //      "custom/praytime",
         // "custom/uptime",
         "tray",
         "custom/power",
