@@ -1,5 +1,8 @@
 plugins=(git)
 # History
+# Disable Delete Warning
+unsetopt RM_STAR_SILENT
+# History
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -96,4 +99,3 @@ export EDITOR=nvim
 export WAYLAND_DISPLAY=wayland-1
 export PATH=$PATH:$HOME/go/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin
 
-#setopt CORRECT
