@@ -32,21 +32,32 @@ return {
         end,
     },
     {
-        "neovim/nvim-lspconfig",
-        config = function()
-            local lspconfig = require("lspconfig")
-            local capabilities = require("blink.cmp").get_lsp_capabilities()
-            lspconfig.lua_ls.setup({ capabilities = capabilities })
-            lspconfig.pyright.setup({ capabilities = capabilities })
-            --            lspconfig.gopls.setup({ capabilities = capabilities })
-            --            lspconfig.clangd.setup({ capabilities = capabilities })
-            --            lspconfig.ts_ls.setup({ capabilities = capabilities })
-            --            lspconfig.cssls.setup({ capabilities = capabilities })
-            lspconfig.bashls.setup({ capabilities = capabilities })
-            --            lspconfig.intelephense.setup({})
-            vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, {})
-            vim.keymap.set("n", "<leader>l", vim.lsp.buf.definition, {})
-            vim.keymap.set("n", "<leader>j", vim.lsp.buf.code_action, {})
-        end,
-    },
+        {
+    "neovim/nvim-lspconfig",
+    config = function()
+        local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+        vim.lsp.config("lua_ls", {
+            capabilities = capabilities,
+        })
+
+        vim.lsp.config("pyright", {
+            capabilities = capabilities,
+        })
+
+        vim.lsp.config("bashls", {
+            capabilities = capabilities,
+        })
+
+        vim.lsp.enable("lua_ls")
+        vim.lsp.enable("pyright")
+        vim.lsp.enable("bashls")
+
+        vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, {})
+        vim.keymap.set("n", "<leader>l", vim.lsp.buf.definition, {})
+        vim.keymap.set("n", "<leader>j", vim.lsp.buf.code_action, {})
+    end,
+}
+    }
+    ,
 }
