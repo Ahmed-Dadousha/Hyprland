@@ -1,5 +1,4 @@
 plugins=(git)
-# History
 # Disable Delete Warning
 unsetopt RM_STAR_SILENT
 # History
@@ -79,6 +78,12 @@ function yz() {
 	zle reset-prompt  # refresh prompt after cd
 }
 
+function cd_last(){
+    cd - > /dev/null
+    zle reset-prompt
+}
+zle -N cd_last
+
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
@@ -93,6 +98,8 @@ bindkey '^D' fzf-cd-widget
 bindkey '^F' fzf-file-widget
 bindkey '^H' fzf-history-widget
 bindkey '^ ' forward-word
+bindkey '^[[1;5D' cd_last
+bindkey '^[[1;5C' cd_last
 
 # Env Variables
 export EDITOR=nvim
