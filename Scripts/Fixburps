@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+file=$HOME/.dotfiles/.config/hypr/hyprland.conf
+if grep -q "tile on" $file ; then
+    sed -i 's/tile on/float on/g' "$file"
+else
+    sed -i 's/float on/tile on/g' "$file"
+fi
+
