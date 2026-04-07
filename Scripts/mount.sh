@@ -46,7 +46,7 @@ if [ -n "$devices" ]; then
         # Assign a name to selected device if it is empty
         [ -z "$usb_label" ] || [ "$usb_label" == "/mnt/USB/New_Volume" ] && usb_label="New_Volume"
         # Create a directory with selected device label and mount it to the directory
-        ! mountpoint -q "/mnt/USB/$usb_label"  && mkdir -p "/mnt/USB/$usb_label" && sudo mount "/dev/$usb_name" "/mnt/USB/$usb_label" && exit 0
+        ! mountpoint -q "/mnt/USB/$usb_label"  && mkdir -p "/mnt/USB/$usb_label" && sudo mount -o uid=1000,gid=1000 "/dev/$usb_name" "/mnt/USB/$usb_label" && exit 0
         # Unmount the selected device and remove the its directory
         sudo umount "/dev/$usb_name" && rmdir "/mnt/USB/$usb_label"
     fi
