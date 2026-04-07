@@ -1,6 +1,9 @@
 #!/bin/bash
 # Get avilable usb block devices
-usbs=$(ls -lahF /sys/block | rg usb | cut -d '/' -f 12 | xargs -I {} lsblk --output NAME,SIZE,LABEL,MOUNTPOINT /dev/{} | rg 'sd[a-z]+[0-9]+' | sed 's/^../󰕓 /')
+#usbs=$(ls -lahF /sys/block | rg usb | cut -d '/' -f 12 | xargs -I {} lsblk --output NAME,SIZE,LABEL,MOUNTPOINT /dev/{} | rg 'sd[a-z]+[0-9]+' | sed 's/^../󰕓 /')
+
+usbs=$(ls -lahF /sys/block | rg usb | cut -d '/' -f 12 | xargs -I {} lsblk -nr --output NAME,SIZE,LABEL,MOUNTPOINT /dev/{} | rg 'sd[a-z]+[0-9]+' | awk '{printf "󰕓 %-10s %-10s %-10s %s\n", $1, $2, $3, $4}')
+
 # Get avilable phone devices
 phones=$(simple-mtpfs -l 2>/dev/null)
 
@@ -19,7 +22,7 @@ fi
 # If there is at least a device
 if [ -n "$devices" ]; then
     #Choose a usb device
-    device=$(echo -e "$devices" | rofi -dmenu -p "󱇰 USB Devices: ")
+    device=$(echo -e "$devices" | rofi -dmenu -theme-str 'window {width: 35%;}' -p "󱇰 USB Devices: ")
     letter=$(echo "$device" | cut -d " " -f 1)
 
     # If the user choosed a phone device
@@ -40,13 +43,12 @@ if [ -n "$devices" ]; then
         usb_name=$(echo "$device" | awk '{print $2}')
         # Get Selected device label
         usb_label=$(echo "$device" | awk '{print $4}')
-
         # Assign a name to selected device if it is empty
         [ -z "$usb_label" ] || [ "$usb_label" == "/mnt/USB/New_Volume" ] && usb_label="New_Volume"
         # Create a directory with selected device label and mount it to the directory
-        [ ! -d "/mnt/USB/$usb_label" ] && mkdir "/mnt/USB/$usb_label" && sudo mount "/dev/$usb_name" "/mnt/USB/$usb_label" -o umask=000 && exit
+        ! mountpoint -q "/mnt/USB/$usb_label"  && mkdir -p "/mnt/USB/$usb_label" && sudo mount "/dev/$usb_name" "/mnt/USB/$usb_label" && exit 0
         # Unmount the selected device and remove the its directory
-        [ -d "/mnt/USB/$usb_label" ] && sudo umount "/dev/$usb_name" && sudo rm -rf "/mnt/USB/$usb_label"
+        sudo umount "/dev/$usb_name" && rmdir "/mnt/USB/$usb_label"
     fi
 
 else
