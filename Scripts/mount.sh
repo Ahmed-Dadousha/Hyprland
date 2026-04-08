@@ -1,7 +1,5 @@
 #!/bin/bash
 # Get avilable usb block devices
-#usbs=$(ls -lahF /sys/block | rg usb | cut -d '/' -f 12 | xargs -I {} lsblk --output NAME,SIZE,LABEL,MOUNTPOINT /dev/{} | rg 'sd[a-z]+[0-9]+' | sed 's/^../󰕓 /')
-
 usbs=$(ls -lahF /sys/block | rg usb | cut -d '/' -f 12 | xargs -I {} lsblk -nr --output NAME,SIZE,LABEL,MOUNTPOINT /dev/{} | rg 'sd[a-z]+[0-9]+' | awk '{printf "󰕓 %-10s %-10s %-10s %s\n", $1, $2, $3, $4}')
 
 # Get avilable phone devices
@@ -43,10 +41,18 @@ if [ -n "$devices" ]; then
         usb_name=$(echo "$device" | awk '{print $2}')
         # Get Selected device label
         usb_label=$(echo "$device" | awk '{print $4}')
+        # Get Selected device filesystem type
+        fs_type=$(lsblk -no FSTYPE /dev/$usb_name)
+        
         # Assign a name to selected device if it is empty
         [ -z "$usb_label" ] || [ "$usb_label" == "/mnt/USB/New_Volume" ] && usb_label="New_Volume"
+        # If it's not ext4
+        if [[ "$fs_type" == "ntfs" || "$fs_type" == "vfat" || "$fs_type" == "fat32" || "$fs_type" == "exfat" ]]; then
         # Create a directory with selected device label and mount it to the directory
         ! mountpoint -q "/mnt/USB/$usb_label"  && mkdir -p "/mnt/USB/$usb_label" && sudo mount -o uid=1000,gid=1000 "/dev/$usb_name" "/mnt/USB/$usb_label" && exit 0
+    else
+        ! mountpoint -q "/mnt/USB/$usb_label"  && mkdir -p "/mnt/USB/$usb_label" && sudo mount "/dev/$usb_name" "/mnt/USB/$usb_label" && sudo chown adosha:adosha "/mnt/USB/$usb_label" && chmod 755 "/mnt/USB/$usb_label" && exit 0
+        fi
         # Unmount the selected device and remove the its directory
         sudo umount "/dev/$usb_name" && rmdir "/mnt/USB/$usb_label"
     fi
