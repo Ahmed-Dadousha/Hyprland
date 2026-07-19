@@ -27,7 +27,7 @@ extract = [
         {run = 'sudo tar -xvf $@', block = false, for = "linux"}
 ]
 decompress = [
-        {run = 'sudo gunzip -f -k $@', block = false, for = "linux"}
+        {run = 'sudo gunzip -k -f $@', block = false, for = "linux"}
 ]
 unrar = [
     {run = 'sudo unrar e $@', block = false, for = "linux" }
@@ -38,12 +38,11 @@ rules = [
 	{mime = "video/*", use = "play"},
 	{mime = "image/*", use = "view"},
 	{mime = "audio/*", use = "play"},
-        {name = "*.pdf",   use = "preview"},
+        {url = "*.pdf",   use = "preview"},
 	{mime = "text/*",  use = "edit"},
-	{name = "*.zip",   use = "unzip"},
-	{name = "*.tar",   use = "extract"},
-	{name = "*.xz",    use = "extract"},
-	{name = "*.gz",    use = "decompress"},
-	{name = "*.rar",   use = "unrar"},
-
+        {url = "*.zip",   use = "unzip"},
+	{url = "*.tar",   use = "extract"},
+	{url= "*.xz",    use = "extract"},
+	{url = "*.gz",    use = "decompress"},
+	{url = "*.rar",   use = "unrar"},
 ]
